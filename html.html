@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo de HTML5 | DevKit Front-End</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">DevKit <span>Front-End</span></a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="html.html">HTML5</a></li>
+                    <li><a href="css.html">CSS3</a></li>
+                    <li><a href="logos.html">Logos (Texto)</a></li>
+                    <li><a href="icones.html">Ícones (Desenhos)</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" title="Mudar Tema">🎨</button>
+                <button id="mobile-menu-toggle" class="mobile-only" title="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-layout container">
+        
+        <aside class="sidebar-nav">
+            <h3>Tópicos HTML</h3>
+            <ul>
+                <li><a href="#basicos">Estrutura Básica</a></li>
+                <li><a href="#atributos">Atributos Globais</a></li>
+                <li><a href="#texto">Formatação de Texto</a></li>
+                <li><a href="#listas">Listas</a></li>
+                <li><a href="#midia">Mídia e Embeds</a></li>
+                <li><a href="#tabelas">Tabelas</a></li>
+                <li><a href="#forms">Formulários</a></li>
+                <li><a href="#semantica">Tags Semânticas</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <h1>Guia Completo de HTML5</h1>
+            
+            <section id="basicos" class="content-section">
+                <h2>Estrutura Básica</h2>
+                <p>Toda página HTML segue uma estrutura fundamental que informa ao navegador como renderizar o conteúdo.</p>
+                <div class="example-card">
+                    <h3>Esqueleto de um Documento HTML</h3>
+                    <div class="code-block"><button class="copy-btn">Copiar</button>
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt; &lt;!-- Define o tipo de documento como HTML5 --&gt;
+&lt;html lang="pt-br"&gt; &lt;!-- Elemento raiz, com o idioma da página --&gt;
+&lt;head&gt;
+  &lt;!-- Contém metadados: informações para o navegador e buscadores --&gt;
+  &lt;meta charset="UTF-8"&gt; &lt;!-- Define o conjunto de caracteres --&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;!-- Configura a página para ser responsiva --&gt;
+  &lt;title&gt;Título da Página&lt;/title&gt; &lt;!-- Aparece na aba do navegador --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Todo o conteúdo visível da página vai aqui --&gt;
+  &lt;h1&gt;Olá, Mundo!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="atributos" class="content-section">
+                <h2>Atributos Globais</h2>
+                <p>Atributos que podem ser adicionados a praticamente qualquer tag HTML para fornecer mais informações, estilos ou interatividade.</p>
+                <div class="example-card">
+                    <h3>ID, Class, Style, Title e Data</h3>
+                    <div class="example-render" style="display: block; text-align: left;">
+                       <p id="paragrafo-unico" class="texto-destaque">Este parágrafo tem um ID e uma classe.</p>
+                       <p style="color: var(--primary-color);">Este parágrafo tem um estilo inline.</p>
+                       <button title="Este é um tooltip que aparece no hover!">Passe o mouse aqui</button>
+                       <div class="user-card" data-user-id="123" data-user-role="admin">Card do Usuário (veja os atributos no código)</div>
+                       <p hidden>Este parágrafo está escondido com o atributo 'hidden'.</p>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;!-- 'id' é um identificador ÚNICO para um elemento --&gt;
+&lt;p id="paragrafo-unico"&gt;...&lt;/p&gt;
+
+&lt;!-- 'class' é um identificador para UM OU MAIS elementos --&gt;
+&lt;p class="texto-destaque"&gt;...&lt;/p&gt;
+
+&lt;!-- 'style' aplica estilos CSS diretamente no elemento (evite se possível) --&gt;
+&lt;p style="color: var(--primary-color);"&gt;...&lt;/p&gt;
+
+&lt;!-- 'title' cria um tooltip que aparece ao passar o mouse --&gt;
+&lt;button title="Este é um tooltip..."&gt;Passe o mouse aqui&lt;/button&gt;
+
+&lt;!-- 'data-*' armazena dados personalizados, úteis para JavaScript --&gt;
+&lt;div data-user-id="123" data-user-role="admin"&gt;...&lt;/div&gt;
+
+&lt;!-- 'hidden' esconde o elemento do usuário de forma semântica --&gt;
+&lt;p hidden&gt;Você não pode me ver.&lt;/p&gt;</code></pre></div>
+                </div>
+            </section>
+
+            <section id="texto" class="content-section">
+                <h2>Formatação de Texto</h2>
+                <div class="example-card">
+                    <h3>Cabeçalhos, Parágrafos e Ênfase</h3>
+                    <div class="example-render" style="display: block; text-align: left;"><h1>Cabeçalho 1</h1> <h2>Cabeçalho 2</h2><p>Este é um parágrafo de texto. Para dar <strong>importância</strong> (negrito), use a tag `strong`. Para dar <em>ênfase</em> (itálico), use a tag `em`.</p></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;h1&gt;Cabeçalho 1&lt;/h1&gt;
+&lt;h2&gt;Cabeçalho 2&lt;/h2&gt;
+&lt;p&gt;Para &lt;strong&gt;importância&lt;/strong&gt;, use a tag `strong`.&lt;/p&gt;
+&lt;p&gt;Para &lt;em&gt;ênfase&lt;/em&gt;, use a tag `em`.&lt;/p&gt;</code></pre></div>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Citações e Código</h3>
+                     <div class="example-render" style="display: block; text-align: left;"><blockquote cite="http://exemplo.com"><p>Esta é uma citação em bloco, usada para trechos longos.</p></blockquote><p>A tag <q>q</q> é para <q>citações curtas em linha</q>.</p><p>Para exibir código, use <code>&lt;p&gt;Olá, Mundo!&lt;/p&gt;</code>. Para blocos de código, use <code>&lt;pre&gt;</code> para preservar os espaços:</p><pre style="background: var(--code-bg-color); padding: 10px; border-radius: 4px;"><code>body {
+  color: #333;
+}</code></pre><p>Para indicar entrada de teclado, use <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;!-- Citação longa, com fonte opcional --&gt;
+&lt;blockquote cite="http://fonte.com"&gt;
+  &lt;p&gt;O conteúdo da citação vai aqui.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- Citação curta, em linha --&gt;
+&lt;p&gt;Como dizem, &lt;q&gt;quem espera sempre alcança&lt;/q&gt;.&lt;/p&gt;
+
+&lt;!-- Para código de computador --&gt;
+&lt;code&gt;const variavel = 10;&lt;/code&gt;
+
+&lt;!-- Para blocos de código, preservando espaços e quebras de linha --&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;
+  function hello() {
+    console.log("Olá!");
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;!-- Para entrada de teclado --&gt;
+&lt;p&gt;Use &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;.&lt;/p&gt;</code></pre></div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Subscrito, Sobrescrito e Tempo</h3>
+                     <div class="example-render" style="display: block; text-align: left;"><p>A fórmula da água é H<sub>2</sub>O.</p><p>O teorema de Pitágoras é a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>.</p><p>O evento acontecerá em <time datetime="2025-12-25">25 de Dezembro de 2025</time>.</p></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;!-- Subscrito (subscript) --&gt;
+&lt;p&gt;A fórmula da água é H&lt;sub&gt;2&lt;/sub&gt;O.&lt;/p&gt;
+
+&lt;!-- Sobrescrito (superscript) --&gt;
+&lt;p&gt;a&lt;sup&gt;2&lt;/sup&gt; + b&lt;sup&gt;2&lt;/sup&gt; = c&lt;sup&gt;2&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;!-- Tag semântica para data/hora --&gt;
+&lt;p&gt;O evento é em &lt;time datetime="2025-12-25"&gt;Natal&lt;/time&gt;.&lt;/p&gt;</code></pre></div>
+                </div>
+            </section>
+            
+            <section id="listas" class="content-section">
+                <h2>Listas</h2>
+                <div class="example-card">
+                    <h3>Lista de Definição e Listas Aninhadas</h3>
+                     <div class="example-render" style="display: block; text-align: left;"><dl><dt style="font-weight: bold;">HTML</dt><dd style="margin-left: 20px;">HyperText Markup Language</dd><dt style="font-weight: bold;">CSS</dt><dd style="margin-left: 20px;">Cascading Style Sheets</dd></dl><hr style="margin: 10px 0;"><ul><li>Bebidas<ol><li>Café</li><li>Chá</li></ol></li><li>Comidas</li></ul></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;!-- Lista de Definição (ótima para glossários) --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt; &lt;!-- Termo --&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt; &lt;!-- Definição --&gt;
+  
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;!-- Lista dentro de outra lista --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bebidas
+    &lt;ol&gt; &lt;!-- Lista aninhada --&gt;
+      &lt;li&gt;Café&lt;/li&gt;
+      &lt;li&gt;Chá&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Comidas&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
+                </div>
+            </section>
+            
+            <section id="midia" class="content-section">
+                <h2>Mídia e Embeds</h2>
+                <div class="example-card">
+                    <h3>Imagens, Vídeos e Áudios</h3>
+                     <div class="example-render" style="display:block; text-align:left;"><p><strong>Imagem:</strong></p><img src="https://via.placeholder.com/300x100.png?text=Imagem+Exemplo" alt="Texto alternativo para a imagem" style="max-width: 100%; border-radius: 4px;"><p style="margin-top: 20px;"><strong>Áudio:</strong></p><audio controls src="https://www.w3schools.com/html/horse.mp3" style="width: 100%;">Seu navegador não suporta a tag de áudio.</audio><p style="margin-top: 20px;"><strong>Vídeo:</strong></p><video controls muted loop width="100%" style="border-radius: 4px;" src="https://www.w3schools.com/html/mov_bbb.mp4" >Seu navegador não suporta a tag de vídeo.</video></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;!-- Imagem: 'src' é o caminho e 'alt' é a descrição (acessibilidade) --&gt;
+&lt;img src="imagem.jpg" alt="Descrição da imagem"&gt;
+
+&lt;!-- Áudio: 'controls' adiciona os botões de play, volume, etc. --&gt;
+&lt;audio controls src="audio.mp3"&gt;
+  Seu navegador não suporta a tag de áudio.
+&lt;/audio&gt;
+
+&lt;!-- Vídeo: 'muted' e 'loop' são atributos úteis para vídeos de fundo --&gt;
+&lt;video controls muted loop src="video.mp4"&gt;
+  Seu navegador não suporta a tag de vídeo.
+&lt;/video&gt;</code></pre></div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Imagens Responsivas com `<picture>`</h3>
+                    <p>A tag <code>&lt;picture&gt;</code> permite que você forneça diferentes fontes de imagem para diferentes tamanhos de tela ou formatos, otimizando o carregamento.</p>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;picture&gt;
+  &lt;!-- Se o navegador suportar o formato WebP, ele usará esta imagem --&gt;
+  &lt;source srcset="imagem-grande.webp" type="image/webp"&gt;
+  
+  &lt;!-- Se a tela tiver no máximo 600px de largura, usará esta imagem --&gt;
+  &lt;source media="(max-width: 600px)" srcset="imagem-pequena.jpg"&gt;
+  
+  &lt;!-- Imagem padrão (fallback) para navegadores que não suportam 'picture' ou nenhuma das condições acima --&gt;
+  &lt;img src="imagem-padrao.jpg" alt="Descrição da imagem"&gt;
+&lt;/picture&gt;</code></pre></div>
+                </div>
+            </section>
+
+            <section id="tabelas" class="content-section">
+                <h2>Tabelas</h2>
+                <div class="example-card">
+                    <h3>Tabela de Usuários</h3>
+                    <div class="example-render" style="width:100%"><style>.custom-table { width: 100%; border-collapse: collapse; text-align: left; } .custom-table th, .custom-table td { padding: 8px; border: 1px solid var(--border-color); } .custom-table thead { background-color: var(--card-bg-color); }</style><table class="custom-table"><thead><tr><th>ID</th><th>Nome</th><th>Email</th></tr></thead><tbody><tr><td>1</td><td>Ana</td><td>ana@email.com</td></tr><tr><td>2</td><td>Bruno</td><td>bruno@email.com</td></tr></tbody></table></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt; &lt;th&gt;ID&lt;/th&gt; &lt;th&gt;Nome&lt;/th&gt; &lt;th&gt;Email&lt;/th&gt; &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;Ana&lt;/td&gt; &lt;td&gt;ana@email.com&lt;/td&gt; &lt;/tr&gt;
+    &lt;tr&gt; &lt;td&gt;2&lt;/td&gt; &lt;td&gt;Bruno&lt;/td&gt; &lt;td&gt;bruno@email.com&lt;/td&gt; &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></div>
+                </div>
+            </section>
+            
+            <section id="forms" class="content-section">
+                <h2>Formulários</h2>
+                <div class="example-card">
+                    <h3>Inputs Comuns e Agrupamento</h3>
+                     <div class="example-render" style="display:block; text-align: left; width: 100%;"><form style="display:flex; flex-direction:column; gap: 15px; width: 100%;"><fieldset style="border: 1px solid var(--border-color); padding: 10px 20px 20px; border-radius: 4px;"><legend style="padding: 0 5px;">Dados Pessoais</legend><div style="display:flex; flex-direction:column; gap: 5px;"><label for="name_ex1">Nome:</label><input type="text" id="name_ex1" name="name" style="padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color);"><label for="pass_ex1">Senha:</label><input type="password" id="pass_ex1" style="padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color);"></div></fieldset><fieldset style="border: 1px solid var(--border-color); padding: 10px 20px 20px; border-radius: 4px;"><legend style="padding: 0 5px;">Opções</legend><p style="margin-top: 10px;">Cor favorita: <input type="color" value="#ef233c"></p><p style="margin-top: 10px;">Data de nascimento: <input type="date" style="color-scheme: dark;"></p><p style="margin-top: 10px;">Nível (1-10): <input type="range" min="1" max="10" step="1"></p><p style="margin-top: 10px;">Enviar arquivo: <input type="file"></p></fieldset></form></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Dados Pessoais&lt;/legend&gt;
+    &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+    &lt;input type="text" id="nome"&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Opções Avançadas&lt;/legend&gt;
+    &lt;label for="cor"&gt;Cor Favorita:&lt;/label&gt;
+    &lt;input type="color" id="cor"&gt;
+    &lt;label for="nasc"&gt;Data de Nascimento:&lt;/label&gt;
+    &lt;input type="date" id="nasc"&gt;
+    &lt;label for="nivel"&gt;Nível:&lt;/label&gt;
+    &lt;input type="range" id="nivel" min="0" max="100"&gt;
+    &lt;label for="foto"&gt;Sua Foto:&lt;/label&gt;
+    &lt;input type="file" id="foto" accept="image/png, image/jpeg"&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre></div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Validação e Sugestões com `datalist`</h3>
+                    <div class="example-render" style="display:block; text-align: left; width: 100%;"><form style="display:flex; flex-direction:column; gap: 10px; width: 100%;" onsubmit="event.preventDefault(); alert('Enviado!');"><label for="email_val">Email (obrigatório):</label><input type="email" id="email_val" required placeholder="seu@email.com" style="padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color);"><label for="cep_val">CEP (formato: 12345-678):</label><input type="text" id="cep_val" pattern="[0-9]{5}-[0-9]{3}" title="Use o formato XXXXX-XXX" placeholder="12345-678" style="padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color);"><label for="navegador_val">Escolha seu navegador:</label><input list="browsers" id="navegador_val" name="browser" style="padding: 5px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color);"><datalist id="browsers"><option value="Chrome"></option><option value="Firefox"></option><option value="Safari"></option><option value="Edge"></option></datalist><button type="submit" class="cta-button" style="padding: 10px 20px; align-self: flex-start; border: none; margin-top: 10px;">Testar Envio</button></form></div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;form&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" required&gt;
+
+  &lt;label for="cep"&gt;CEP:&lt;/label&gt;
+  &lt;input type="text" id="cep" pattern="[0-9]{5}-[0-9]{3}" title="Use o formato XXXXX-XXX"&gt;
+
+  &lt;label for="navegador"&gt;Navegador:&lt;/label&gt;
+  &lt;input list="browsers" id="navegador"&gt;
+  &lt;datalist id="browsers"&gt;
+    &lt;option value="Chrome"&gt;
+    &lt;option value="Firefox"&gt;
+  &lt;/datalist&gt;
+
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre></div>
+                </div>
+            </section>
+
+            <section id="semantica" class="content-section">
+                <h2>Tags Semânticas</h2>
+                <div class="example-card">
+                    <h3>Layout Semântico e Interativo</h3>
+                    <div class="example-render" style="display:block; text-align: left; width: 100%;"><figure style="margin-bottom: 20px;"><img src="https://via.placeholder.com/300x100.png?text=Imagem+Semantica" alt="Placeholder" style="max-width: 100%; border-radius: 4px;"><figcaption style="text-align: center; margin-top: 5px; font-style: italic;">Isto é uma legenda (figcaption).</figcaption></figure><details><summary style="font-weight: bold; cursor: pointer;">Clique para ver os detalhes</summary><p style="padding-top: 10px;">Este conteúdo estava escondido! A tag `details` cria um "acordeão" nativo, sem precisar de JavaScript.</p></details></div>
+                     <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-html">&lt;header&gt;Cabeçalho da Página&lt;/header&gt;
+&lt;nav&gt;Menu de Navegação&lt;/nav&gt;
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;article&gt;...&lt;/article&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+&lt;aside&gt;Barra Lateral&lt;/aside&gt;
+&lt;footer&gt;Rodapé da Página&lt;/footer&gt;
+
+&lt;figure&gt;
+  &lt;img src="..." alt="..."&gt;
+  &lt;figcaption&gt;Legenda para a imagem.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;Título Visível&lt;/summary&gt;
+  &lt;p&gt;Conteúdo que aparece ao clicar.&lt;/p&gt;
+&lt;/details&gt;</code></pre></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>DevKit Front-End © 2025. Criado com fins educacionais.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+</body>
+</html>

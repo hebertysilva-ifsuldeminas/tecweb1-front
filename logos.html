@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logos com Tipografia | DevKit Front-End</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Bebas+Neue&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">DevKit <span>Front-End</span></a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="html.html">HTML5</a></li>
+                    <li><a href="css.html">CSS3</a></li>
+                    <li><a href="logos.html">Logos (Texto)</a></li>
+                    <li><a href="icones.html">Ícones (Desenhos)</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" title="Mudar Tema">🎨</button>
+                <button id="mobile-menu-toggle" class="mobile-only" title="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h1>Logos com Tipografia Criativa</h1>
+            <p class="subtitle" style="font-size: 1.2rem; color: var(--text-muted-color); max-width: 700px; margin: 10px auto 0;">Explore o poder das fontes e do CSS para criar logos e efeitos de texto impressionantes e memoráveis.</p>
+        </div>
+
+        <div class="topic-card" style="margin-bottom: 30px;">
+            <h3>Como Usar Fontes Externas</h3>
+            <p>Para a maioria dos efeitos de texto, você vai querer uma fonte com personalidade. A forma mais fácil é usar o <strong>Google Fonts</strong>.</p>
+            <ol>
+                <li>Escolha uma fonte no site <a href="https://fonts.google.com/" target="_blank">Google Fonts</a>.</li>
+                <li>Clique em "Get font" e depois "Get embed code".</li>
+                <li>Copie a tag <code>&lt;link&gt;</code> e cole no <code>&lt;head&gt;</code> do seu HTML.</li>
+                <li>Use a propriedade <code>font-family</code> fornecida no seu CSS para aplicar a fonte.</li>
+            </ol>
+        </div>
+
+        <div class="feature-cards">
+            <article class="example-card">
+                <h3>Letra Capitular</h3>
+                <div class="example-render" style="min-height: 150px; text-align: left; display: block;">
+                    <style>
+                        .drop-cap-p { font-family: 'Poppins', sans-serif; }
+                        .drop-cap-p::first-letter { font-family: 'Playfair Display', serif; font-size: 4em; font-weight: bold; color: var(--primary-color); float: left; line-height: 0.8; margin-right: 8px; }
+                    </style>
+                    <p class="drop-cap-p">Esta é uma técnica de design clássica, onde a primeira letra de um parágrafo é muito maior que o resto do texto. O pseudo-elemento `::first-letter` torna isso incrivelmente fácil de fazer.</p>
+                </div>
+                <div class="code-block"><button class="copy-btn">Copiar</button><pre><code>p::first-letter {
+  font-size: 4em;
+  font-weight: bold;
+  color: #ef233c;
+  float: left;
+  line-height: 0.8;
+  margin-right: 8px;
+}</code></pre></div>
+            </article>
+
+            <article class="example-card">
+                <h3>Efeito Máquina de Escrever</h3>
+                <div class="example-render" style="min-height: 150px;">
+                    <style>
+                        @keyframes typing { from { width: 0 } to { width: 100% } }
+                        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-color); } }
+                        .typing-effect h1 { font-family: 'Roboto Mono', monospace; font-size: 1.8rem; overflow: hidden; white-space: nowrap; border-right: .15em solid var(--primary-color); animation: typing 3.5s steps(30, end) infinite, blink-caret .75s step-end infinite; }
+                    </style>
+                    <div class="typing-effect"><h1>CSS pode fazer isso...</h1></div>
+                </div>
+                <div class="code-block"><button class="copy-btn">Copiar</button><pre><code>@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink-caret { 50% { border-color: transparent } }
+h1 {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: .15em solid orange;
+  animation: 
+    typing 3.5s steps(30, end) infinite,
+    blink-caret .75s step-end infinite;
+}</code></pre></div>
+            </article>
+
+            <article class="example-card">
+                <h3>Texto com Reflexo</h3>
+                <div class="example-render" style="min-height: 150px;">
+                    <style>
+                        .reflected-text { position: relative; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: var(--text-color); }
+                        .reflected-text::after { content: 'REFLEXO'; position: absolute; left: 0; bottom: -100%; transform: scaleY(-1); color: transparent; background: linear-gradient(to bottom, var(--text-color) 0%, transparent 70%); -webkit-background-clip: text; background-clip: text; opacity: 0.5; }
+                    </style>
+                    <h1 class="reflected-text">REFLEXO</h1>
+                </div>
+                <div class="code-block"><button class="copy-btn">Copiar</button><pre><code>h1 { position: relative; }
+h1::after {
+  content: 'REFLEXO';
+  position: absolute; left: 0; bottom: -100%;
+  transform: scaleY(-1);
+  color: transparent;
+  background: linear-gradient(to bottom, #FFF 0%, transparent 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 0.5;
+}</code></pre></div>
+            </article>
+
+            <article class="example-card">
+                <h3>Texto com `mix-blend-mode`</h3>
+                <div class="example-render" style="min-height: 150px; background-color: #1a1a1d;">
+                    <style>
+                        .blend-text { position: relative; font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: #00fff9; }
+                        .blend-text::before { content: 'BLEND'; position: absolute; left: 0; top: 0; color: #ff00c1; mix-blend-mode: screen; transform: translate(-5px, -5px); }
+                    </style>
+                    <h1 class="blend-text">BLEND</h1>
+                </div>
+                <div class="code-block"><button class="copy-btn">Copiar</button><pre><code>h1 { position: relative; color: #00fff9; }
+h1::before {
+  content: 'BLEND';
+  position: absolute; left: 0; top: 0;
+  color: #ff00c1;
+  transform: translate(-5px, -5px);
+  mix-blend-mode: screen;
+}</code></pre></div>
+            </article>
+            
+             <article class="example-card"><h3>Texto com Gradiente</h3><div class="example-render" style="min-height: 150px;"><style>.logo-grad-text { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; font-weight: 700; background: linear-gradient(45deg, #ef233c, #fca311); color: transparent; -webkit-background-clip: text; background-clip: text; }</style><h1 class="logo-grad-text">GRADIENTE</h1></div><div class="code-block"><button class="copy-btn">Copiar</button><pre><code>.logo-grad-text { font-family: 'Bebas Neue', sans-serif; background: linear-gradient(45deg, #ef233c, #fca311); color: transparent; -webkit-background-clip: text; background-clip: text; }</code></pre></div></article>
+            <article class="example-card"><h3>Texto Vazado</h3><div class="example-render" style="min-height: 150px;"><style>.logo-stroke-text { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: transparent; -webkit-text-stroke: 2px var(--primary-color); }</style><h1 class="logo-stroke-text">VAZADO</h1></div><div class="code-block"><button class="copy-btn">Copiar</button><pre><code>.logo-stroke-text { font-family: 'Bebas Neue', sans-serif; color: transparent; -webkit-text-stroke: 2px #ef233c; }</code></pre></div></article>
+            <article class="example-card"><h3>Texto 3D com `text-shadow`</h3><div class="example-render" style="min-height: 150px;"><style>.logo-3d-text { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: #d90429; text-shadow: 1px 1px 0px #c1121f, 2px 2px 0px #c1121f, 3px 3px 0px #c1121f, 4px 4px 0px #c1121f, 5px 5px 0px #c1121f; }</style><h1 class="logo-3d-text">3D</h1></div><div class="code-block"><button class="copy-btn">Copiar</button><pre><code>.logo-3d-text { color: #d90429; text-shadow: 1px 1px 0px #c1121f, 2px 2px 0px #c1121f, 3px 3px 0px #c1121f, 4px 4px 0px #c1121f, 5px 5px 0px #c1121f; }</code></pre></div></article>
+            <article class="example-card"><h3>Efeito Neon</h3><div class="example-render" style="min-height: 150px; background-color: #1a1a1d;"><style> @keyframes flicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00aeff, 0 0 35px #00aeff, 0 0 40px #00aeff, 0 0 50px #00aeff, 0 0 75px #00aeff; color: #e0e0e0; } 20%, 24%, 55% { text-shadow: none; color: transparent; } } .logo-neon-text { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; animation: flicker 2s infinite alternate; }</style><h1 class="logo-neon-text">NEON</h1></div><div class="code-block"><button class="copy-btn">Copiar</button><pre><code>.logo-neon-text { color: #e0e0e0; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00aeff, 0 0 35px #00aeff; }</code></pre></div></article>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>DevKit Front-End © 2025. Criado com fins educacionais.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

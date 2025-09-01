@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de CSS3 | DevKit Front-End</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">DevKit <span>Front-End</span></a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="html.html">HTML5</a></li>
+                    <li><a href="css.html">CSS3</a></li>
+                    <li><a href="logos.html">Logos com CSS</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" title="Mudar Tema">🎨</button>
+                <button id="mobile-menu-toggle" class="mobile-only" title="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-layout container">
+        
+        <aside class="sidebar-nav">
+            <h3>Tópicos CSS</h3>
+            <ul>
+                <li><a href="#seletores">Seletores</a></li>
+                <li><a href="#box-model">Box Model</a></li>
+                <li><a href="#cores-fontes">Cores e Fontes</a></li>
+                <li><a href="#flexbox">Flexbox</a></li>
+                <li><a href="#grid">CSS Grid</a></li>
+                <li><a href="#posicionamento">Posicionamento</a></li>
+                <li><a href="#transicoes-animacoes">Transições e Animações</a></li>
+                <li><a href="#transformacoes">Transformações 2D/3D</a></li>
+                <li><a href="#responsivo">Design Responsivo</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <h1>Guia Avançado de CSS3</h1>
+
+            <section id="seletores" class="content-section">
+                <h2>Seletores</h2>
+                <p>Regras que "selecionam" os elementos HTML que você quer estilizar.</p>
+                <div class="example-card">
+                    <h3>Seletores Comuns e Combinadores</h3>
+                    <div class="example-render" style="display:block; text-align: left;">
+                        <style>
+                            .sel-ex article h3 { color: #ef233c; } /* Descendente */
+                            .sel-ex > p { font-weight: bold; } /* Filho Direto */
+                            .sel-ex h3 + p { text-decoration: underline; } /* Irmão Adjacente */
+                        </style>
+                        <div class="sel-ex">
+                            <p>Este parágrafo é filho direto do container, então fica em negrito.</p>
+                            <article>
+                                <h3>Este H3 é descendente, então fica vermelho.</h3>
+                                <p>Este parágrafo é filho do article, não do container.</p>
+                                <p>Este parágrafo vem logo após o H3, então fica sublinhado.</p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn">Copiar</button>
+                        <pre><code>/* Seletor de Classe */
+.minha-classe { color: blue; }
+
+/* Seletor de ID (deve ser único na página) */
+#meu-id { font-weight: bold; }
+
+/* Seletor Descendente (espaço): seleciona 'p' dentro de 'article' */
+article p { font-style: italic; }
+
+/* Seletor de Filho Direto (>): seleciona 'p' que é filho direto de 'div' */
+div > p { border: 1px solid #ccc; }
+
+/* Seletor de Irmão Adjacente (+): seleciona o 'p' que vem IMEDIATAMENTE após um 'h2' */
+h2 + p { margin-top: 0; }
+
+/* Pseudo-classe: estiliza um elemento em um estado especial (ex: mouse sobre) */
+button:hover { background-color: red; }
+
+/* Pseudo-elemento: estiliza uma parte específica de um elemento */
+p::first-line { font-weight: bold; }
+</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="box-model" class="content-section">
+                <h2>Box Model</h2>
+                <p>Todo elemento HTML é uma caixa. O Box Model define o tamanho e o espaçamento dessa caixa.</p>
+                 <div class="example-card">
+                    <h3>Margin, Padding e Border</h3>
+                     <div class="example-render">
+                         <div style="background: #ef233c; color: white; width: 200px; padding: 20px; border: 10px solid #d90429; margin: 15px; text-align: center;">
+                            Conteúdo
+                         </div>
+                     </div>
+                    <div class="code-block">
+                        <button class="copy-btn">Copiar</button>
+                        <pre><code>.caixa {
+  /* Espaçamento interno, entre o conteúdo e a borda */
+  padding: 20px;
+
+  /* Borda ao redor do padding */
+  border: 10px solid #d90429;
+
+  /* Espaçamento externo, fora da borda (empurra outros elementos) */
+  margin: 15px;
+
+  /* Por padrão, width e height se aplicam apenas ao conteúdo.
+     'border-box' faz com que width e height incluam padding e border,
+     o que torna os layouts muito mais fáceis de calcular. */
+  box-sizing: border-box;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="flexbox" class="content-section">
+                <h2>Flexbox</h2>
+                <p>Um modelo de layout unidimensional para alinhar e distribuir itens em um contêiner.</p>
+                 <div class="example-card">
+                    <h3>Container Flexível</h3>
+                     <div class="example-render" style="width:100%">
+                         <div style="display: flex; justify-content: space-around; align-items: center; background-color: var(--card-bg-color); padding: 10px; border-radius: 5px; min-height: 100px; width: 100%;">
+                             <div style="background: var(--primary-color); padding: 10px;">Item 1</div>
+                             <div style="background: var(--primary-color); padding: 25px;">Item 2</div>
+                             <div style="background: var(--primary-color); padding: 15px;">Item 3</div>
+                         </div>
+                     </div>
+                    <div class="code-block">
+                        <button class="copy-btn">Copiar</button>
+                        <pre><code>.container-flex {
+  display: flex; /* Ativa o Flexbox */
+  
+  /* Alinhamento no eixo principal (horizontal por padrão) */
+  /* justify-content: flex-start | flex-end | center | space-between | space-around; */
+  justify-content: space-around;
+  
+  /* Alinhamento no eixo transversal (vertical por padrão) */
+  /* align-items: stretch | flex-start | flex-end | center; */
+  align-items: center;
+
+  /* Direção do eixo principal */
+  /* flex-direction: row | column; */
+
+  /* Espaçamento entre os itens */
+  gap: 10px;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="grid" class="content-section">
+                <h2>CSS Grid</h2>
+                <p>Um modelo de layout bidimensional (linhas e colunas), perfeito para layouts complexos.</p>
+                 <div class="example-card">
+                    <h3>Layout em Grade</h3>
+                     <div class="example-render" style="width:100%">
+                         <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px; width: 100%;">
+                             <div style="background: #ef233c; padding: 20px;">Sidebar (1fr)</div>
+                             <div style="background: #ef233c; padding: 20px;">Conteúdo (2fr)</div>
+                             <div style="background: #ef233c; padding: 20px; grid-column: span 2;">Footer (ocupa 2 colunas)</div>
+                         </div>
+                     </div>
+                    <div class="code-block">
+                        <button class="copy-btn">Copiar</button>
+                        <pre><code>.container-grid {
+  display: grid; /* Ativa o Grid */
+  
+  /* Define as colunas: 2 colunas, a segunda com o dobro do tamanho da primeira */
+  grid-template-columns: 1fr 2fr;
+
+  /* Define as linhas (opcional, pode ser automático) */
+  /* grid-template-rows: auto; */
+
+  /* Espaçamento entre as células da grade */
+  gap: 10px;
+}
+
+.item-grid {
+  /* Faz um item ocupar 2 colunas */
+  grid-column: span 2;
+
+  /* Faz um item ocupar 3 linhas */
+  /* grid-row: span 3; */
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="transicoes-animacoes" class="content-section">
+                <h2>Transições e Animações</h2>
+                <p>Para adicionar movimento e vida à sua interface.</p>
+                 <div class="example-card">
+                    <h3>Botão com Transição e Animação Pulsante</h3>
+                     <div class="example-render">
+                        <style>
+                           @keyframes pulse {
+                               0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 35, 60, 0.7); }
+                               70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(239, 35, 60, 0); }
+                               100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 35, 60, 0); }
+                           }
+                           .btn-animado {
+                               padding: 15px 30px; background-color: #ef233c; color: white; border: none; border-radius: 5px; cursor: pointer;
+                               transition: background-color 0.3s ease, transform 0.3s ease;
+                               animation: pulse 2s infinite;
+                           }
+                           .btn-animado:hover {
+                               background-color: #d90429; transform: translateY(-5px);
+                               animation-play-state: paused; /* Pausa a animação no hover */
+                           }
+                        </style>
+                        <button class="btn-animado">Passe o mouse!</button>
+                     </div>
+                    <div class="code-block">
+                        <button class="copy-btn">Copiar</button>
+                        <pre><code>/* TRANSIÇÃO: suaviza a mudança de uma propriedade */
+.botao {
+  background-color: blue;
+  transition: background-color 0.4s ease-in-out;
+}
+.botao:hover {
+  background-color: lightblue;
+}
+
+/* ANIMAÇÃO: define uma sequência de estilos com @keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.elemento-animado {
+  /* Aplica a animação definida */
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-iteration-count: infinite; /* Repete infinitamente */
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+             <section id="transformacoes" class="content-section">
+                <h2>Transformações 2D/3D</h2>
+                <p>Para rotacionar, escalar, mover ou inclinar elementos.</p>
+                 <div class="example-card">
+                    <h3>Card que vira em 3D (Flip Card)</h3>
+                     <div class="example-render">
+                        <style>
+                           .flip-card { perspective: 1000px; width: 200px; height: 120px; }
+                           .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+                           .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+                           .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; justify-content: center; align-items: center; border-radius: 8px; color: white; }
+                           .flip-card-front { background-color: #ef233c; }
+                           .flip-card-back { background-color: #8d99ae; transform: rotateY(180deg); }
+                        </style>
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">Frente</div>
+                                <div class="flip-card-back">Verso!</div>
+                            </div>
+                        </div>
+                     </div>
+                    <div class="code-block">
+                        <button class="copy-btn">Copiar</button>
+                        <pre><code>.elemento {
+  /* Transforma o elemento no hover */
+  transition: transform 0.3s ease;
+}
+.elemento:hover {
+  /* Múltiplas transformações */
+  transform: rotate(10deg) scale(1.2);
+}
+
+/* Exemplo de Card que vira em 3D */
+.flip-card-container {
+  perspective: 1000px; /* Define a perspectiva 3D */
+}
+.flip-card {
+  transition: transform 0.6s;
+  transform-style: preserve-3d; /* Mantém o 3D */
+}
+.flip-card-container:hover .flip-card {
+  transform: rotateY(180deg); /* Vira o card no eixo Y */
+}
+.card-front, .card-back {
+  backface-visibility: hidden; /* Esconde o lado de trás do elemento */
+}
+.card-back {
+  transform: rotateY(180deg);
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>DevKit Front-End © 2025. Criado com fins educacionais.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

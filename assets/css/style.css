@@ -1,0 +1,450 @@
+/* ======================================== */
+/* 0. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS     */
+/* ======================================== */
+:root {
+    /* Tema Escuro (Padrão) */
+    --bg-color: #1a1a1d;
+    --bg-secondary-color: #2b2d42;
+    --text-color: #edf2f4;
+    --text-muted-color: #8d99ae;
+    --primary-color: #ef233c;
+    --primary-hover-color: #d90429;
+    --card-bg-color: #252528;
+    --border-color: #43455a;
+    --code-bg-color: #0f0f10;
+    --logo-span-color: #ef233c;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+
+    /* Fontes */
+    --font-primary: 'Poppins', sans-serif;
+    --font-code: 'Roboto Mono', monospace;
+
+    /* Métricas */
+    --header-height: 70px;
+    --border-radius: 8px;
+}
+
+body.light-theme {
+    /* Tema Claro */
+    --bg-color: #f8f9fa;
+    --bg-secondary-color: #e9ecef;
+    --text-color: #212529;
+    --text-muted-color: #6c757d;
+    --primary-color: #0077b6;
+    --primary-hover-color: #023e8a;
+    --card-bg-color: #ffffff;
+    --border-color: #dee2e6;
+    --code-bg-color: #e9ecef;
+    --logo-span-color: #0077b6;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 20px);
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ======================================== */
+/* 1. CABEÇALHO E NAVEGAÇÃO                 */
+/* ======================================== */
+.main-header {
+    background-color: var(--card-bg-color);
+    border-bottom: 1px solid var(--border-color);
+    height: var(--header-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.logo span {
+    color: var(--logo-span-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted-color);
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#theme-toggle, #mobile-menu-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.mobile-only { display: none; }
+
+/* ======================================== */
+/* 2. CONTEÚDO DA PÁGINA INICIAL (HOME)     */
+/* ======================================== */
+.hero {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--bg-secondary-color);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Fonte responsiva */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted-color);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-5px);
+}
+
+.features {
+    padding: 80px 0;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+.card-icon {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: var(--text-muted-color);
+}
+
+/* ======================================== */
+/* 3. LAYOUT DAS PÁGINAS DE CONTEÚDO        */
+/* ======================================== */
+.page-layout {
+    display: flex;
+    gap: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.sidebar-nav {
+    flex: 0 0 220px; /* Não cresce, não encolhe, base de 220px */
+    position: sticky;
+    top: calc(var(--header-height) + 20px);
+    height: calc(100vh - var(--header-height) - 40px);
+    overflow-y: auto;
+}
+
+.sidebar-nav h3 {
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-muted-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+}
+
+.sidebar-nav a.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+}
+
+.content-area {
+    flex: 1;
+    min-width: 0; /* Previne que o conteúdo force o layout a quebrar */
+}
+
+.content-section {
+    margin-bottom: 60px;
+}
+
+.content-section h2 {
+    font-size: 2.2rem;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: 30px;
+}
+
+/* ======================================== */
+/* 4. CARDS DE EXEMPLO E BLOCOS DE CÓDIGO   */
+/* ======================================== */
+.example-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.example-card h3 {
+    padding: 20px;
+    margin: 0;
+    font-size: 1.4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.example-card > p {
+    padding: 0 20px;
+}
+
+.example-render {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    background-color: var(--bg-color);
+}
+
+.code-block {
+    background-color: var(--code-bg-color);
+    position: relative;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+.code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.code-block code {
+    font-family: var(--font-code);
+    line-height: 1.5;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--border-color);
+    color: var(--text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--primary-color);
+}
+
+.copy-btn.copied {
+    background: #28a745;
+}
+
+/* Elementos específicos dos exemplos */
+.example-render details {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    width: 100%;
+}
+.example-render summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+.example-render figure {
+    text-align: center;
+}
+.example-render figcaption {
+    font-style: italic;
+    color: var(--text-muted-color);
+    margin-top: 5px;
+}
+
+/* ======================================== */
+/* 5. RODAPÉ                                */
+/* ======================================== */
+.main-footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-bg-color);
+    color: var(--text-muted-color);
+}
+
+/* ======================================== */
+/* 6. RESPONSIVIDADE E MENU MÓVEL           */
+/* ======================================== */
+@media (max-width: 992px) {
+    .page-layout {
+        flex-direction: column;
+    }
+    .sidebar-nav {
+        position: static;
+        height: auto;
+        overflow-y: visible;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .sidebar-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-only { display: block; }
+
+    .main-nav {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg-color);
+        padding: 20px;
+        transform: translateY(-120%);
+        transition: transform 0.4s ease-in-out;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .main-nav.active {
+        transform: translateY(0);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .nav-links a { font-size: 1.2rem; }
+}
