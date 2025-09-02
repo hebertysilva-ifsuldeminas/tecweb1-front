@@ -1,0 +1,312 @@
+/* RESET E ESTILOS GERAIS */
+:root {
+    --cor-fundo: #0d1117;
+    --cor-texto: #c9d1d9;
+    --cor-azul: #3498db;
+    --cor-roxo: #9b59b6;
+    --cor-fundo-card: #161b22;
+    --cor-borda: #30363d;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+h1, h2 { font-family: 'Orbitron', sans-serif; color: var(--cor-azul); }
+h2 { border-bottom: 1px solid var(--cor-borda); padding-bottom: 10px; margin-top: 40px; }
+main { padding: 20px; max-width: 900px; margin: auto; }
+section { margin-bottom: 60px; }
+footer { text-align: center; padding: 20px; margin-top: 40px; color: #888; }
+
+/* CABEÇALHO */
+.cabecalho {
+    background-color: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    border-bottom: 1px solid var(--cor-borda);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.cabecalho h1 { font-size: 1.5rem; margin: 0; color: #fff; }
+.cabecalho nav a { color: var(--cor-texto); text-decoration: none; margin-left: 20px; transition: color 0.3s ease; }
+.cabecalho nav a:hover { color: var(--cor-azul); }
+
+/* ESTRUTURA DOS EXEMPLOS */
+.exemplo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 20px;
+}
+.demo-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    background-color: var(--cor-fundo);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.code-area h4 {
+    font-family: 'Source Code Pro', monospace;
+    color: #888;
+    margin: 20px 0 5px 0;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+.code-area h4:first-child {
+    margin-top: 0;
+}
+.code-area pre {
+    background-color: #011627;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 0;
+    color: #d6deeb;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+/* --- ESTILOS DOS EXEMPLOS --- */
+
+/* SEÇÃO 1: SIMPLES */
+.btn-hover-color {
+    background-color: var(--cor-azul);
+    border: none; color: white; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-size: 1rem;
+    transition: background-color 0.4s ease;
+}
+.btn-hover-color:hover { background-color: var(--cor-roxo); }
+
+.card-hover-lift {
+    width: 150px; height: 100px; background-color: var(--cor-fundo-card); border: 1px solid var(--cor-borda);
+    border-radius: 8px; display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover-lift:hover { transform: translateY(-10px); box-shadow: 0 12px 24px rgba(0,0,0,0.2); }
+
+/* SEÇÃO 2: KEYFRAMES */
+.pulse-effect {
+    width: 80px; height: 80px; background-color: var(--cor-azul); border-radius: 50%;
+    animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.loading-spinner {
+    width: 60px; height: 60px; border: 4px solid var(--cor-borda); border-top: 4px solid var(--cor-azul);
+    border-radius: 50%; animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* SEÇÃO 3: COMPLEXAS */
+.svg-drawing path {
+    stroke-dasharray: 252; stroke-dashoffset: 252;
+    animation: draw 2s linear forwards infinite;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.scroll-animation-box {
+    width: 200px; height: 100px; background-color: var(--cor-roxo); display: flex; justify-content: center;
+    align-items: center; text-align: center; border-radius: 8px; color: white; padding: 10px;
+}
+.fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+.flip-card { background-color: transparent; width: 180px; height: 120px; perspective: 1000px; }
+.flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+    position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; border-radius: 8px; display: flex; justify-content: center;
+    align-items: center; font-size: 1.2rem;
+}
+.flip-card-front { background-color: var(--cor-azul); color: white; }
+.flip-card-back { background-color: var(--cor-roxo); color: white; transform: rotateY(180deg); }
+
+/* SEÇÃO 4: CRIATIVAS */
+.texto-animado-gradiente {
+    font-size: 2.5em; font-weight: bold; background: linear-gradient(90deg, #ffcc00, #ff5f6d, #833ab4);
+    background-size: 300% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: color-fill 4s infinite linear;
+}
+@keyframes color-fill {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.glitch-text {
+    font-family: 'Source Code Pro', monospace; font-weight: bold; position: relative;
+    font-size: 2.5em; color: var(--cor-roxo); animation: glitch 2.5s infinite linear alternate-reverse;
+}
+.glitch-text::before, .glitch-text::after {
+    content: "GLITCH"; position: absolute; top: 0; left: 0; overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.glitch-text::before {
+    left: 2px; text-shadow: -1px 0 #ff00c1; clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    animation: glitch-up 2.5s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+    left: -2px; text-shadow: 1px 0 #00ffff; clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
+    animation: glitch-down 2.5s infinite linear alternate-reverse;
+}
+@keyframes glitch { 0%{transform:translate(0)}20%{transform:translate(-5px,5px)}40%{transform:translate(-5px,-5px)}60%{transform:translate(5px,5px)}80%{transform:translate(5px,-5px)}100%{transform:translate(0)} }
+@keyframes glitch-up { 20%{transform:translate(-5px,-5px)}40%{transform:translate(5px,5px)}60%{transform:translate(-5px,-5px)}80%{transform:translate(5px,5px)} }
+@keyframes glitch-down { 20%{transform:translate(5px,-5px)}40%{transform:translate(-5px,5px)}60%{transform:translate(5px,-5px)}80%{transform:translate(-5px,5px)} }
+
+.wavy-button {
+    background-color: var(--cor-azul); border: none; color: white; padding: 15px 30px;
+    border-radius: 5px; cursor: pointer; font-size: 1rem; position: relative; overflow: hidden;
+    animation: border-pulse 2s infinite ease-out;
+}
+.wavy-button::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 200%; height: 100%;
+    background: rgba(255, 255, 255, 0.2); transform: skewX(-20deg);
+    animation: wave 2.5s infinite linear;
+}
+@keyframes wave { from { left: -100%; } to { left: 100%; } }
+
+/* SEÇÃO 5: MAGIA PURA */
+.cube-container { width: 100px; height: 100px; perspective: 800px; }
+.cube {
+    width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg); animation: spin-cube 10s infinite linear;
+}
+.cube .face {
+    position: absolute; width: 100px; height: 100px; display: flex; justify-content: center;
+    align-items: center; font-size: 2em; font-weight: bold; color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.1);
+}
+.face-front { transform: rotateY(0deg) translateZ(50px); }
+.face-back { transform: rotateY(180deg) translateZ(50px); }
+.face-right { transform: rotateY(90deg) translateZ(50px); }
+.face-left { transform: rotateY(-90deg) translateZ(50px); }
+.face-top { transform: rotateX(90deg) translateZ(50px); }
+.face-bottom { transform: rotateX(-90deg) translateZ(50px); }
+@keyframes spin-cube { from { transform: rotateX(0deg) rotateY(0deg); } to { transform: rotateX(360deg) rotateY(360deg); } }
+
+.typing-text {
+    font-family: 'Source Code Pro', monospace; font-size: 1.5rem; font-weight: normal; color: #fff;
+    overflow: hidden; white-space: nowrap; border-right: 2px solid #fff; width: 0;
+    animation: typing 3s steps(30, end) forwards, blink .75s step-end infinite;
+}
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { from, to { border-color: transparent } 50% { border-color: white; } }
+
+.ripple-css-btn {
+    position: relative; overflow: hidden; background-color: var(--cor-roxo); border: none;
+    color: white; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-size: 1rem;
+}
+.ripple-css-btn::before {
+    content: ''; position: absolute; top: 50%; left: 50%; width: 5px; height: 5px;
+    background-color: rgba(255,255,255,0.6); border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 0.6s ease;
+}
+.ripple-css-btn:active::before { transform: translate(-50%, -50%) scale(25); opacity: 1; }
+
+/* SEÇÃO 6: TEMÁTICAS */
+.deathly-hallows { width: 150px; height: 150px; }
+.deathly-hallows path, .deathly-hallows circle, .deathly-hallows line {
+    fill: none; stroke: #ffcc00; stroke-width: 2; stroke-linecap: round;
+    stroke-linejoin: round; stroke-dasharray: 250; stroke-dashoffset: 250;
+    animation: draw-symbol 4s ease-in-out forwards;
+}
+.dh-circle { animation-delay: 1s; }
+.dh-line { animation-delay: 2s; }
+@keyframes draw-symbol { to { stroke-dashoffset: 0; } }
+
+.tardis {
+    width: 80px; height: 120px; background-color: #003B6F; position: relative;
+    border: 2px solid #002A4F; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    animation: dematerialize 3s infinite linear;
+}
+.tardis-roof { position: absolute; top: -10px; left: -10px; width: 100px; height: 10px; background-color: #002A4F; }
+.tardis-light {
+    position: absolute; top: -18px; left: 35px; width: 10px; height: 8px;
+    background-color: #fff; border-radius: 2px; box-shadow: 0 0 10px 3px #fff;
+}
+@keyframes dematerialize { 0%{transform:rotate(0deg) scale(1);opacity:1}50%{transform:rotate(360deg) scale(1.2);opacity:.5;filter:blur(1px)}100%{transform:rotate(720deg) scale(0);opacity:0;filter:blur(5px)} }
+
+/* SEÇÃO 7: ICÔNICAS */
+.lightsaber-v2 {
+    width: 50px; height: 260px; position: relative; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center;
+}
+.hilt-v2 {
+    width: 100%; height: 60px; background: linear-gradient(to right, #e0e0e0, #a0a0a0);
+    border: 2px solid #666; border-radius: 5px; position: absolute; bottom: 0; z-index: 2;
+}
+.blade-v2 {
+    width: 12px; height: 200px; position: absolute; bottom: 60px; background-color: #48D4F2;
+    border-radius: 5px; box-shadow: 0 0 25px 8px #48D4F2; transform-origin: bottom;
+    transform: scaleY(0); transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); z-index: 1;
+}
+.lightsaber-v2:hover .blade-v2 { transform: scaleY(1); }
+
+.spiderverse-card {
+    font-family: 'Anton', sans-serif; font-size: 4rem; text-transform: uppercase;
+    position: relative; color: transparent; text-shadow: 0px 0px 2px rgba(255,255,255,0.4);
+}
+.spiderverse-card::before, .spiderverse-card::after {
+    content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+.spiderverse-card::before { color: #FF1B1B; animation: glitch-v2-1 2.5s infinite linear alternate; }
+.spiderverse-card::after { color: #00A3FF; animation: glitch-v2-2 2.5s infinite linear alternate; }
+@keyframes glitch-v2-1{0%,100%{transform:translate(0);clip-path:inset(50% 0 30% 0)}5%{transform:translate(2px,-3px);clip-path:inset(10% 0 80% 0)}10%{transform:translate(-2px,3px);clip-path:inset(90% 0 5% 0)}15%{transform:translate(0);clip-path:inset(40% 0 40% 0)}85%{transform:translate(2px,3px);clip-path:inset(5% 0 90% 0)}90%{transform:translate(-2px,-3px);clip-path:inset(70% 0 10% 0)}95%{transform:translate(0);clip-path:inset(50% 0 30% 0)}}
+@keyframes glitch-v2-2{0%,100%{transform:translate(0);clip-path:inset(70% 0 10% 0)}5%{transform:translate(-2px,3px);clip-path:inset(30% 0 50% 0)}10%{transform:translate(2px,-3px);clip-path:inset(15% 0 75% 0)}15%{transform:translate(0);clip-path:inset(60% 0 20% 0)}85%{transform:translate(-2px,-3px);clip-path:inset(40% 0 40% 0)}90%{transform:translate(2px,3px);clip-path:inset(80% 0 10% 0)}95%{transform:translate(0);clip-path:inset(70% 0 10% 0)}}
+
+.pacman {
+    width: 0px; height: 0px; border-right: 50px solid transparent; border-top: 50px solid #FFD700;
+    border-left: 50px solid #FFD700; border-bottom: 50px solid #FFD700;
+    border-radius: 50%; animation: chomp 0.5s infinite;
+}
+@keyframes chomp { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(45deg); } }
+
+.one-ring-svg { width: 160px; height: 160px; filter: drop-shadow(0 0 10px #FFD700); }
+.ring-band { stroke: #FFD700; stroke-width: 18; fill: none; }
+.inscription-svg {
+    font-family: 'Tangerine', cursive; font-size: 24px; font-weight: 700;
+    fill: #FFA500; opacity: 0; transition: opacity 2s ease-in-out;
+}
+.one-ring-svg:hover .inscription-svg { opacity: 1; }
+.inscription-svg textPath { animation: deslizar-texto 20s linear infinite; }
+@keyframes deslizar-texto { from { startOffset: '100%'; } to { startOffset: '0%'; } }
+
+.full-width-demo .demo-area { grid-column: 1 / -1; min-height: 350px; }
+.full-width-demo .code-area { grid-column: 1 / -1; }
+.matrix-demo {
+    width: 100%; background: #000; overflow: hidden; position: relative;
+    font-family: 'Source Code Pro', monospace; color: #0F0; text-shadow: 0 0 8px #0F0;
+    font-size: 1.2rem; padding: 10px; line-height: 1.4;
+}
+.matrix-demo span { position: absolute; opacity: 0; animation: fall 10s infinite linear; }
+@keyframes fall { 0%{opacity:0;transform:translateY(-20px)}5%{opacity:1}95%{opacity:1}100%{transform:translateY(350px);opacity:0} }
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .exemplo-container { grid-template-columns: 1fr; }
+    .cabecalho { flex-direction: column; gap: 10px; }
+}
