@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de Animações | DevKit Front-End</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/styleanim.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&family=Playfair+Display:wght@700&family=Anton&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">DevKit <span>Front-End</span></a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="html.html">HTML5</a></li>
+                    <li><a href="css.html">CSS3</a></li>
+                    <li><a href="animacoes.html">Animações</a></li>
+                    <li><a href="logos.html">Logos (Texto)</a></li>
+                    <li><a href="icones.html">Ícones (Desenhos)</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" title="Mudar Tema">🎨</button>
+                <button id="mobile-menu-toggle" class="mobile-only" title="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-layout container">
+        
+        <aside class="sidebar-nav">
+            <h3>Seções de Animação</h3>
+            <ul>
+                <li><a href="#simples">Simples (Transition)</a></li>
+                <li><a href="#keyframes">Keyframes</a></li>
+                <li><a href="#complexas">Complexas</a></li>
+                <li><a href="#criativas">Criativas</a></li>
+                <li><a href="#magia-pura">Magia Pura (CSS)</a></li>
+                <li><a href="#tematicas">Temáticas 1</a></li>
+                <li><a href="#iconicas">Temáticas 2 (Icônicas)</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-area">
+            <h1>Laboratório de Animações CSS</h1>
+            
+            <section id="simples" class="content-section">
+                <h2>Animações Simples com <code>transition</code></h2>
+                <p>Animações que suavizam a mudança de um estado para outro, geralmente com interação do usuário.</p>
+                <div class="example-card">
+                    <h3>Botão com Mudança de Cor</h3>
+                    <div class="example-render">
+                        <button class="btn-hover-color">Passe o mouse</button>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.btn-hover-color {
+  background-color: #3498db;
+  transition: background-color 0.4s ease;
+}
+.btn-hover-color:hover {
+  background-color: #9b59b6;
+}</code></pre></div>
+                </div>
+                <div class="example-card">
+                    <h3>Cartão que "Levanta"</h3>
+                     <div class="example-render">
+                        <div class="card-hover-lift">Passe o mouse</div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.card-hover-lift {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+.card-hover-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}</code></pre></div>
+                </div>
+            </section>
+            
+            <section id="keyframes" class="content-section">
+                <h2>Animações com <code>@keyframes</code></h2>
+                <p>Animações com múltiplos estágios que podem rodar continuamente.</p>
+                <div class="example-card">
+                    <h3>Efeito Pulsante</h3>
+                    <div class="example-render">
+                        <div class="pulse-effect"></div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.pulse-effect {
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}</code></pre></div>
+                </div>
+                <div class="example-card">
+                    <h3>Spinner de Carregamento</h3>
+                    <div class="example-render">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.loading-spinner {
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}</code></pre></div>
+                </div>
+            </section>
+
+            <section id="complexas" class="content-section">
+                 <h2>Animações Complexas</h2>
+                <p>Técnicas avançadas que combinam CSS com SVG ou são ativadas por eventos.</p>
+                <div class="example-card">
+                    <h3>Desenho de Linha SVG</h3>
+                    <div class="example-render">
+                        <svg class="svg-drawing" viewBox="0 0 100 100">
+                            <path d="M 10,50 A 40,40 0,0,1 90,50 A 40,40 0,0,1 10,50" fill="none" stroke="var(--primary-color)" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.svg-drawing path {
+  stroke-dasharray: 252;
+  stroke-dashoffset: 252;
+  animation: draw 2s linear infinite;
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}</code></pre></div>
+                </div>
+                <div class="example-card">
+                    <h3>Animação no Scroll (com JS)</h3>
+                    <div class="example-render">
+                        <div class="scroll-animation-box fade-in">
+                            Role a página para me ver
+                        </div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, 
+              transform 0.6s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Requer JavaScript para adicionar a classe 'visible' */</code></pre></div>
+                </div>
+                 <div class="example-card">
+                    <h3>Cartão 3D que Vira</h3>
+                    <div class="example-render">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">Frente</div>
+                                <div class="flip-card-back">Costas</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.flip-card { perspective: 1000px; }
+.flip-card-inner { 
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}</code></pre></div>
+                </div>
+            </section>
+
+            <section id="criativas" class="content-section">
+                <h2>Animações Criativas</h2>
+                 <p>Efeitos visuais que demonstram o poder de propriedades CSS menos comuns.</p>
+                 <div class="example-card">
+                     <h3>Texto com Gradiente Animado</h3>
+                     <div class="example-render">
+                         <h3 class="texto-animado-gradiente">Olá, Mundo!</h3>
+                     </div>
+                     <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.texto-animado-gradiente {
+  background: linear-gradient(90deg, #ffcc00, #ff5f6d, #833ab4);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: color-fill 4s infinite linear;
+}
+@keyframes color-fill {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}</code></pre></div>
+                 </div>
+                 <div class="example-card">
+                    <h3>Efeito "Glitch"</h3>
+                    <div class="example-render">
+                        <h3 class="glitch-text">GLITCH</h3>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.glitch-text::before,
+.glitch-text::after {
+  content: "GLITCH";
+  position: absolute;
+  /* ... */
+}
+/* ... resto das regras ... */</code></pre></div>
+                </div>
+                 <div class="example-card">
+                     <h3>Botão com Efeito de Onda</h3>
+                     <div class="example-render">
+                         <button class="wavy-button">Onda</button>
+                     </div>
+                     <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.wavy-button {
+  position: relative;
+  overflow: hidden;
+}
+.wavy-button::before {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  animation: wave 2.5s infinite linear;
+}
+@keyframes wave {
+  from { left: -100%; }
+  to { left: 100%; }
+}</code></pre></div>
+                 </div>
+            </section>
+            
+            <section id="magia-pura" class="content-section">
+                <h2>Magia Pura com CSS</h2>
+                <p>A prova de que CSS por si só pode criar efeitos alucinantes sem JavaScript.</p>
+                <div class="example-card">
+                    <h3>Cubo 3D Animado</h3>
+                    <div class="example-render">
+                        <div class="cube-container">
+                            <div class="cube">
+                                <div class="face face-front">1</div>
+                                <div class="face face-back">2</div>
+                                <div class="face face-right">3</div>
+                                <div class="face face-left">4</div>
+                                <div class="face face-top">5</div>
+                                <div class="face face-bottom">6</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.cube-container { perspective: 800px; }
+.cube { 
+  transform-style: preserve-3d; 
+  animation: spin-cube 10s infinite linear;
+}
+.face {
+  position: absolute;
+}
+.face-front { transform: rotateY(0deg) translateZ(50px); }
+/* ... transforms para as outras 5 faces ... */
+@keyframes spin-cube {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to { transform: rotateX(360deg) rotateY(360deg); }
+}</code></pre></div>
+                </div>
+                 <div class="example-card">
+                    <h3>Efeito de Digitação</h3>
+                    <div class="example-render">
+                        <p class="typing-text">Olá, sou uma animação de texto CSS!</p>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.typing-text {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+  animation: typing 3s steps(30, end) forwards,
+             blink .75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--text-color); }
+}</code></pre></div>
+                </div>
+                 <div class="example-card">
+                    <h3>Botão "Ripple" (Puro CSS)</h3>
+                    <div class="example-render">
+                        <button class="ripple-css-btn">Clique em mim!</button>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.ripple-css-btn {
+  position: relative;
+  overflow: hidden;
+}
+.ripple-css-btn::before {
+  content: '';
+  position: absolute;
+  transform: translate(-50%,-50%) scale(0);
+  transition: all 0.6s ease;
+}
+.ripple-css-btn:active::before {
+  transform: translate(-50%,-50%) scale(25);
+  opacity: 1;
+}</code></pre></div>
+                 </div>
+            </section>
+            
+            <section id="tematicas" class="content-section">
+                <h2>Animações Temáticas (Filmes & Séries)</h2>
+                <div class="example-card">
+                    <h3>Harry Potter - Relíquias da Morte</h3>
+                    <div class="example-render">
+                        <svg class="deathly-hallows" viewBox="0 0 100 100">
+                            <path class="dh-triangle" d="M 50,10 L 90,80 L 10,80 Z" />
+                            <circle class="dh-circle" cx="50" cy="60" r="20" />
+                            <line class="dh-line" x1="50" y1="10" x2="50" y2="80" />
+                        </svg>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.deathly-hallows path, circle, line {
+  fill: none;
+  stroke: #ffcc00;
+  stroke-dasharray: 250;
+  stroke-dashoffset: 250;
+  animation: draw-symbol 4s ease-in-out forwards;
+}
+.dh-circle { animation-delay: 1s; }
+.dh-line { animation-delay: 2s; }
+
+@keyframes draw-symbol {
+  to { stroke-dashoffset: 0; }
+}</code></pre></div>
+                </div>
+                <div class="example-card">
+                    <h3>Doctor Who - TARDIS</h3>
+                    <div class="example-render">
+                        <div class="tardis">
+                            <div class="tardis-roof"></div>
+                            <div class="tardis-light"></div>
+                        </div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.tardis {
+  animation: dematerialize 3s infinite linear;
+}
+@keyframes dematerialize {
+  0% { transform: rotate(0deg) scale(1); opacity: 1; }
+  50% { transform: rotate(360deg) scale(1.2); opacity: 0.5; }
+  100% { transform: rotate(720deg) scale(0); opacity: 0; }
+}</code></pre></div>
+                </div>
+            </section>
+            
+            <section id="iconicas" class="content-section">
+                <h2>Animações Icônicas (Mais Temáticas)</h2>
+                <div class="example-card">
+                    <h3>Star Wars - Sabre de Luz</h3>
+                    <div class="example-render">
+                        <div class="lightsaber-v2">
+                            <div class="hilt-v2"></div>
+                            <div class="blade-v2"></div>
+                        </div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.lightsaber-v2 { position: relative; }
+.blade-v2 {
+  transform-origin: bottom;
+  transform: scaleY(0);
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.lightsaber-v2:hover .blade-v2 {
+  transform: scaleY(1);
+}</code></pre></div>
+                </div>
+                <div class="example-card">
+                    <h3>Homem-Aranha (Aranhaverso)</h3>
+                    <div class="example-render">
+                        <div class="spiderverse-card" data-text="MILES">MILES</div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.spiderverse-card { color: transparent; }
+.spiderverse-card::before, .spiderverse-card::after {
+  content: attr(data-text);
+  position: absolute;
+}
+.spiderverse-card::before {
+  color: #FF1B1B;
+  animation: glitch-v2-1 2.5s infinite linear alternate;
+}
+.spiderverse-card::after {
+  color: #00A3FF;
+  animation: glitch-v2-2 2.5s infinite linear alternate;
+}</code></pre></div>
+                </div>
+                <div class="example-card">
+                    <h3>Pac-Man</h3>
+                    <div class="example-render">
+                        <div class="pacman"></div>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.pacman {
+  border-right: 50px solid transparent;
+  border-top: 50px solid #FFD700;
+  border-left: 50px solid #FFD700;
+  border-bottom: 50px solid #FFD700;
+  animation: chomp 0.5s infinite;
+}
+@keyframes chomp {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(45deg); }
+}</code></pre></div>
+                </div>
+                 <div class="example-card">
+                    <h3>Senhor dos Anéis - O Um Anel</h3>
+                    <div class="example-render">
+                        <svg class="one-ring-svg" viewBox="0 0 200 200">
+                            <defs>
+                                <path id="caminho-do-anel" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"></path>
+                            </defs>
+                            <circle class="ring-band" cx="100" cy="100" r="75"></circle>
+                            <text class="inscription-svg">
+                                <textPath href="#caminho-do-anel">
+                                    Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk agh burzum-ishi krimpatul.
+                                </textPath>
+                            </text>
+                        </svg>
+                    </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.inscription-svg {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.one-ring-svg:hover .inscription-svg {
+  opacity: 1;
+}
+.inscription-svg textPath {
+  animation: deslizar-texto 20s linear infinite;
+}
+@keyframes deslizar-texto {
+  from { startOffset: '100%'; }
+  to { startOffset: '0%'; }
+}</code></pre></div>
+                </div>
+                <div class="example-card">
+                    <h3>Matrix - Chuva Digital (com JS)</h3>
+                    <div class="example-render matrix-demo">
+                        </div>
+                    <div class="code-block"><button class="copy-btn">Copiar</button><pre><code class="language-css">.matrix-demo span {
+  position: absolute;
+  animation: fall 10s infinite linear;
+}
+@keyframes fall {
+  /* ... */
+}
+/* JS é usado para gerar os spans
+   e delays aleatórios. */</code></pre></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>DevKit Front-End © 2025. Criado com fins educacionais.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/scriptanim.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
